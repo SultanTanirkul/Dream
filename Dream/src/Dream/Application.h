@@ -1,5 +1,6 @@
 #pragma once
 #include "Core.h"
+#include "Events/Event.h"
 namespace Dream
 {
 	class DREAM_API Application {
