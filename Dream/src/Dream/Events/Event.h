@@ -2,10 +2,6 @@
 
 #include "Dream/Core.h"
 
-#include <string>
-#include <functional>
-#include <sstream>
-
 namespace Dream {
 	enum class EventType
 	{

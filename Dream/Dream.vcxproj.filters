@@ -19,9 +19,22 @@
     <ClInclude Include="src\Dream\EntryPoint.h">
       <Filter>Dream</Filter>
     </ClInclude>
+    <ClInclude Include="src\Dream\Events\ApplicationEvent.h">
+      <Filter>Dream\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dream\Events\Event.h">
+      <Filter>Dream\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dream\Events\KeyEvent.h">
+      <Filter>Dream\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Dream\Events\MouseEvent.h">
+      <Filter>Dream\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Dream\Log.h">
       <Filter>Dream</Filter>
     </ClInclude>
+    <ClInclude Include="src\drpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dream\Application.cpp">
@@ -30,13 +43,6 @@
     <ClCompile Include="src\Dream\Log.cpp">
       <Filter>Dream</Filter>
     </ClCompile>
-    <ClCompile Include="src\Dream\Events\Event.h">
-      <Filter>Dream\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dream\Events\KeyEvent.h">
-      <Filter>Dream\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Dream\Events\MouseEvent.h" />
-    <ClCompile Include="src\Dream\Events\ApplicationEvent.h" />
+    <ClCompile Include="src\drpch.cpp" />
   </ItemGroup>
 </Project>

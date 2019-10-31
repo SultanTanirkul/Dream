@@ -1,3 +1,5 @@
+#include "drpch.h"
+
 #include "Log.h"
 namespace Dream 
 {

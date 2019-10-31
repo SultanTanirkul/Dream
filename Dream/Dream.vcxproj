@@ -76,7 +76,8 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>drpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DR_PLATFORM_WINDOWS;DR_BUILD_DLL;DR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -96,7 +97,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>drpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DR_PLATFORM_WINDOWS;DR_BUILD_DLL;DR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -120,7 +122,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>drpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DR_PLATFORM_WINDOWS;DR_BUILD_DLL;DR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -147,15 +150,19 @@
     <ClInclude Include="src\Dream\Application.h" />
     <ClInclude Include="src\Dream\Core.h" />
     <ClInclude Include="src\Dream\EntryPoint.h" />
+    <ClInclude Include="src\Dream\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Dream\Events\Event.h" />
+    <ClInclude Include="src\Dream\Events\KeyEvent.h" />
+    <ClInclude Include="src\Dream\Events\MouseEvent.h" />
     <ClInclude Include="src\Dream\Log.h" />
+    <ClInclude Include="src\drpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Dream\Events\ApplicationEvent.h" />
-    <ClCompile Include="src\Dream\Events\KeyEvent.h" />
     <ClCompile Include="src\Dream\Application.cpp" />
-    <ClCompile Include="src\Dream\Events\Event.h" />
-    <ClCompile Include="src\Dream\Events\MouseEvent.h" />
     <ClCompile Include="src\Dream\Log.cpp" />
+    <ClCompile Include="src\drpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

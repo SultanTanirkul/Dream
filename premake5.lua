@@ -14,6 +14,9 @@ workspace "Dream"
 		kind "SharedLib"
 		language "C++"
 
+		pchheader "drpch.h"
+		pchsource "Dream/src/drpch.cpp"
+
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 		objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
