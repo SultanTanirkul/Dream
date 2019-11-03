@@ -1,8 +1,7 @@
 #include "drpch.h"
 
 #include "Log.h"
-namespace Dream 
-{
+namespace Dream {
 	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
 	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 

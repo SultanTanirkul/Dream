@@ -1,13 +1,13 @@
 #include "drpch.h"
-
 #include "Application.h"
+
 #include "Dream/Events/ApplicationEvent.h"
 #include "Dream/Log.h"
 
-namespace Dream
-{
+namespace Dream {
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -16,11 +16,9 @@ namespace Dream
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-
-		if (e.GetCategoryFlags()) {
+		while (m_Running)
+		{
+			m_Window->OnUpdate();
 		}
-		DR_TRACE(e);
-		while (true);
 	}
 }

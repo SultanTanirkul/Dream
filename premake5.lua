@@ -1,5 +1,6 @@
 workspace "Dream"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -7,18 +8,24 @@ workspace "Dream"
 		"Release",
 		"Dist"
 	}
-	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}" 
+	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+	-- Include directories relative to root folder (solution directory)
+	IncludeDir = {}
+	IncludeDir["GLFW"] = "Dream/vendor/GLFW/include"
+
+	include "Dream/vendor/GLFW"
 
 	project "Dream"
 		location "Dream"
 		kind "SharedLib"
 		language "C++"
 
-		pchheader "drpch.h"
-		pchsource "Dream/src/drpch.cpp"
-
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 		objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+		pchheader "drpch.h"
+		pchsource "Dream/src/drpch.cpp"
 
 		files
 		{
@@ -28,8 +35,15 @@ workspace "Dream"
 
 		includedirs
 		{
+			"%{prj.name}/src",
 			"%{prj.name}/vendor/spdlog/include",
-			"%{prj.name}/src"
+			"%{IncludeDir.GLFW}"
+		}
+
+		links
+		{
+			"GLFW",
+			"opengl32.lib"
 		}
 
 		filter "system:windows"
@@ -61,49 +75,49 @@ workspace "Dream"
 			defines "DR_DIST"
 			optimize "On"
 
-project "Sandbox"
-	location "Sandbox"
-	kind "ConsoleApp"
-	language "C++"
+	project "Sandbox"
+		location "Sandbox"
+		kind "ConsoleApp"
+		language "C++"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+		objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files
-	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
-	}
-
-	includedirs
-	{
-		"Dream/vendor/spdlog/include",
-		"Dream/src"
-	}
-
-	links
-	{
-		"Dream"
-	}
-
-	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
-		systemversion "latest"
-
-		defines
+		files
 		{
-			"DR_PLATFORM_WINDOWS"
+			"%{prj.name}/src/**.h",
+			"%{prj.name}/src/**.cpp",
 		}
 
-	filter "configurations:Debug"
-		defines "DR_DEBUG"
-		symbols "On"
+		includedirs
+		{
+			"Dream/vendor/spdlog/include",
+			"Dream/src"
+		}
 
-	filter "configurations:Release"
-		defines "DR_RELEASE"
-		optimize "On"
+		links
+		{
+			"Dream"
+		}
 
-	filter "configurations:Dist"
-		defines "DR_DIST"
-		optimize "On"
+		filter "system:windows"
+			cppdialect "C++17"
+			staticruntime "On"
+			systemversion "latest"
+
+			defines
+			{
+				"DR_PLATFORM_WINDOWS"
+			}
+
+		filter "configurations:Debug"
+			defines "DR_DEBUG"
+			symbols "On"
+
+		filter "configurations:Release"
+			defines "DR_RELEASE"
+			optimize "On"
+
+		filter "configurations:Dist"
+			defines "DR_DIST"
+			optimize "On"

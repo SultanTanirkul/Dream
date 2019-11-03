@@ -1,6 +1,4 @@
 #pragma once
-#include <memory>
-
 #include "Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
@@ -21,15 +19,16 @@ namespace Dream {
 
 	};
 }
+
 #define DR_CORE_TRACE(...)     ::Dream::Log::GetCoreLogger()->trace(__VA_ARGS__)
 #define DR_CORE_INFO(...)      ::Dream::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define DR_CORE_WARN(...)      ::Dream::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define DR_CORE_ERROR(...)     ::Dream::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define DR_CORE_FATAL(...)     ::Dream::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
-#define DR_TRACE(...)     ::Dream::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define DR_INFO(...)      ::Dream::Log::GetClientLogger()->info(__VA_ARGS__)
-#define DR_WARN(...)      ::Dream::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define DR_ERROR(...)     ::Dream::Log::GetClientLogger()->error(__VA_ARGS__)
-#define DR_FATAL(...)     ::Dream::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define DR_TRACE(...)          ::Dream::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define DR_INFO(...)           ::Dream::Log::GetClientLogger()->info(__VA_ARGS__)
+#define DR_WARN(...)           ::Dream::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define DR_ERROR(...)          ::Dream::Log::GetClientLogger()->error(__VA_ARGS__)
+#define DR_FATAL(...)          ::Dream::Log::GetClientLogger()->fatal(__VA_ARGS__)
 
