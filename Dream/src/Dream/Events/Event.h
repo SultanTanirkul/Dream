@@ -49,7 +49,7 @@ namespace Dream {
 	class EventDispatcher 
 	{
 		template<typename T>
-		using EventFn = std::is_function<bool(T&)>;
+		using EventFn = std::function<bool(T&)>;
 	public:
 		EventDispatcher(Event& event)
 			: m_Event(event)
@@ -61,7 +61,7 @@ namespace Dream {
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.m_Handled = func(*(*T)&m_Event)
+				m_Event.m_Handled = func(*(T*)&m_Event);
 					return true;
 			}
 			return false;
